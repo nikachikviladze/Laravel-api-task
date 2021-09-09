@@ -9,6 +9,8 @@ class Article extends Model
 {
     use HasFactory;
 
+    public $timestamps = false; 
+
     public function comments()
     {
       return $this->belongsToMany(Comment::class);

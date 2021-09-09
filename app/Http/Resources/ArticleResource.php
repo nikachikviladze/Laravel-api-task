@@ -13,7 +13,7 @@ class ArticleResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'created_at' => $this->created_at,
-            'view_count' => rand(1, 10000),
+            'view_count' => $this->view_count,
             'comment_count' => $this->comments->count(),
             'tags' => $this->tags,
         ];
