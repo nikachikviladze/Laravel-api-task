@@ -12,11 +12,11 @@ class ArticleRepository{
 
         if($sort=='created_at'){
             
-            $articles = $articles->orderBy('created_at', 'desc');
+            $articles = $articles->orderBy('created_at', $order);
         }elseif($sort=='comment_count'){
-            $articles = $articles->withCount('comments')->orderBy('comments_count', 'desc');
+            $articles = $articles->withCount('comments')->orderBy('comments_count', $order);
         }elseif($sort=='view_count'){
-            $articles = $articles->orderBy('view_count', 'desc');
+            $articles = $articles->orderBy('view_count', $order);
         } 
         
         $articles = $articles->orderBy('id', $order);        
