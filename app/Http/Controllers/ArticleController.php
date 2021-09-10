@@ -26,7 +26,6 @@ class ArticleController extends Controller
     {
         return ArticleRepository::article($article, $this->sort, $this->limit,$this->order, $this->paginate);
     }
-
     public function article_comments($id)
     {
         $article = Article::findOrFail($id);
