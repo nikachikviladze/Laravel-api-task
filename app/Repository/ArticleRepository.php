@@ -5,13 +5,11 @@ use App\Http\Resources\ArticleResource;
 
 class ArticleRepository{
 
-    public function article($article, $sort, $limit, $order, $paginate, $ids =null)
+    public static function article($article, $sort, $limit, $order, $paginate, $ids =null)
     {
-
 
         $articles = ($ids)? $article->whereIn('id', $ids)->take($limit) :  $article->take($limit);
 
-        // dd($articles->get());
         if($sort=='created_at'){
             
             $articles = $articles->orderBy('created_at', 'desc');
