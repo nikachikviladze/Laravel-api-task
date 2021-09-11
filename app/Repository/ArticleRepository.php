@@ -10,8 +10,7 @@ class ArticleRepository{
 
         $articles = ($ids)? $article->whereIn('id', $ids)->take($limit) :  $article->take($limit);
 
-        if($sort=='created_at'){
-            
+        if($sort=='created_at'){            
             $articles = $articles->orderBy('created_at', $order);
         }elseif($sort=='comment_count'){
             $articles = $articles->withCount('comments')->orderBy('comments_count', $order);
@@ -19,16 +18,7 @@ class ArticleRepository{
             $articles = $articles->orderBy('view_count', $order);
         } 
         
-        $articles = $articles->orderBy('id', $order);        
-
-        if($paginate){
-
-            $articles = $articles->paginate($paginate);
-
-        }else{
-
-            $articles = $articles->get();
-        }
+        $articles = ($paginate)? $articles->orderBy('created_at', $order)->paginate($paginate) : $articles->orderBy('created_at', $order)->get();        
 
         return ArticleResource::collection($articles);
     }

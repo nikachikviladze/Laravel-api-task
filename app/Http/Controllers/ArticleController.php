@@ -18,7 +18,7 @@ class ArticleController extends Controller
     public function __construct()
     {
         $this->order = (request()->order=='asc')? 'asc' : 'desc';
-        $this->limit =(request()->limit)? request()->limit : 10;
+        $this->limit =(is_numeric(request()->limit))? request()->limit : 10;
         $this->sort = (request()->sort)? request()->sort : null;
         $this->paginate = (is_numeric(request()->paginate))? request()->paginate : null;
     }
